@@ -1,3 +1,85 @@
 .header {
     text-align: center;
+    height: fit-content;
+}
+
+h1 {
+    font-family: Arial, sans-serif; 
+    font-size: 32px;
+    font-weight: bold;
+    color: #0165E1;              
+  }
+
+#contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh;          
+    width: 100vw;
+    background-color: rgb(243, 243, 243);
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    gap: 10px;
+}
+
+.resultado {
+    height: fit-content;
+}
+
+#contenedor-secundario {
+    width: 30vw;
+    background-color: white;  
+    padding: 20px;              
+    border-radius: 15px;  
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /*Sombra*/
+}
+
+label{
+    width: 25vw;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;                 
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 10px;                 
+    border: 2px solid #cfcfcf;     
+    border-radius: 8px;            
+    font-size: 16px;                
+    width: 20vw;
+    margin-bottom: 8px;
+  }
+input[type="submit"] {
+    background-color: #0165E1;  
+    color: white;
+    padding: 12px;
+    width: 22vw;
+    border: none;
+    border-radius: 8px;            
+    font-size: 16px;              
+    cursor: pointer;               
+    transition: background-color 0.3s; 
+}
+
+input[type="submit"]:hover {
+    background-color: #0147a6;      
+}
+
+.texto-resultado{
+    width: 30vw; 
+    max-width: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;                
+    color: #333;
+}
+
+.error{
+    color: red;
 }

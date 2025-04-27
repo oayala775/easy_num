@@ -9,16 +9,22 @@
 </head>
 
 <body>
-    <header class="header">
-        <h1>Bienvenido a EasyNum</h1>
-    </header>
-
-    <form>
-        <label for="number">Por favor introduce el número que deseas verificar: </label>
-        <input type="text" id="number" name="number">
-        <input type="submit" id="submit" value="Enviar"> <!-- Button -->
-    </form>
-    
+    <div id="contenedor-principal">
+            <header class="header">
+                <h1>EasyNum</h1>
+            </header>
+            <div id="contenedor-secundario">
+                <div id="contenedor-formulario">
+                    <form>
+                        <label for="number">Introduce un número</label>
+                        <input type="text" id="number" name="number">
+                        <input type="submit" id="submit" value="Enviar"> 
+                    </form>
+                </div>
+                <div id="resultado">
+                </div>
+            </div>
+    </div>
+<script src="main.js"></script>
 </body>
-
 </html>

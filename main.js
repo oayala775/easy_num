@@ -1,18 +1,3 @@
-const readline = require("readline");
-
-const r1 = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const leer = (question) => {
-  return new Promise((resolve) => {
-    r1.question(question, (answer) => {
-      resolve(answer);
-    });
-  });
-};
-
 const estados = ["inicial", "binario", "octal", "decimal", "hexadecimal"];
 
 const f = [
@@ -23,32 +8,39 @@ const f = [
   [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 ];
 
-async function main() {
-  const numero = await leer("Numero: ");
-  r1.close();
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita que el formulario recargue la página
 
-  let estado = 0,
-    chr,
-    idx;
-
-  for (let i = 0; i < numero.length; i++) {
-    chr = numero[i];
-
-    if (/[a-fA-F]/.test(chr)) {
-      idx = 10;
-    } else if (/[0-9]/.test(chr)) {
-      idx = Number(chr);
-    } else {
-      console.log("Error");
-      return;
+  const numero = document.getElementById("number").value;
+  let estado = 0, chr, idx;
+  let resultadoDiv = document.getElementById("resultado");
+  let resultado = ""
+  
+  if (numero != ""){
+    for (let i = 0; i < numero.length; i++) {
+      chr = numero[i];
+  
+      if (/[a-fA-F]/.test(chr)) {
+        idx = 10;
+      } else if (/[0-9]/.test(chr)) {
+        idx = Number(chr);
+      } else {
+        resultadoDiv.innerHTML = '<p class="texto-resultado error">No se ha podido reconocer el sistema numerico debido a un carácter inválido</p>';
+        return;
+      }
+  
+      estado = f[estado][idx];
     }
-
-    estado = f[estado][idx];
+  
+    resultado = '<p class="texto-resultado">El valor ingresado puede pertenecer a los siguientes sistemas numéricos:</p>';
+    for (let i = estado; i < estados.length; i++) {
+      resultado += `<p class="texto-resultado">• ${estados[i]}</p>`;
+    }
+  
+    resultadoDiv.innerHTML = resultado;
+  }else{
+    resultado = '<p class="texto-resultado">No se ha ingresado ningun número<p>'
+    resultadoDiv.innerHTML = resultado;
   }
-
-  for (let i = estado; i < estados.length; i++) {
-    console.log(`${estados[i]}`);
-  }
-}
-
-main();
+  
+});
